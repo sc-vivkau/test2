@@ -7,18 +7,19 @@ pipeline{
 	stages {
 		stage('Testing'){
 		    steps {
-			
-			sh echo "Testing the connection"
-			sh echo "Connected successfully"
-			
+			    
+			sh "echo 'Testing the connection'"
+			sh "echo 'Connected successfully'"
+			    
 		    }
 		}
 		stage('Creating directory'){
 		
 		steps{	
-			    sh mkdir test
-			    sh ls -lhrt 
-			    sh echo "Directory created successfully"
+			 
+			    sh "mkdir test"
+			    sh "ls -lhrt" 
+			    sh "echo 'Directory created successfully'"
 			
 		}	
 		}

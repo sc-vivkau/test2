@@ -18,7 +18,7 @@ pipeline{
 		steps{	
 			 
 			    
-			    sh "ls -lhrt" 
+			    
 			    sh "echo 'Directory created successfully'"
 			    sh "ls -lhrt"
 			

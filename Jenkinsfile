@@ -17,7 +17,7 @@ pipeline{
 		
 		steps{	
 			 
-			    sh "mkdir test"
+			    
 			    sh "ls -lhrt" 
 			    sh "echo 'Directory created successfully'"
 			    sh "ls -lhrt"

@@ -17,7 +17,7 @@ pipeline{
 		
 		steps{	
 			 
-			    
+			    sh "echo 'Testing'"
 			    
 			    sh "echo 'Directory created successfully'"
 			    sh "ls -lhrt"

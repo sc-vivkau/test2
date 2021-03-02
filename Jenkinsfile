@@ -18,7 +18,7 @@ pipeline{
 		steps{	
 			 
 			    
-			    
+			    sh "echo 'polling test success'"
 			    sh "echo 'Directory created successfully'"
 			    sh "ls -lhrt"
 			

@@ -22,8 +22,13 @@ pipeline{
 			    sh "echo 'Directory created successfully'"
 			    sh "ls -lhrt"
 			
-		}	
 		}
+		}
+		stage('maven build compilation'){
+			sh "cd /home/opc/IoT-Sense/neomsense"
+			sh "mvn clean install -DskipTests=true"
+		}
+		
 	}
 
 }

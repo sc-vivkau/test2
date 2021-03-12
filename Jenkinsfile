@@ -25,8 +25,10 @@ pipeline{
 		}
 		}
 		stage('maven build compilation'){
+			steps{
 			sh "cd /home/opc/IoT-Sense/neomsense"
 			sh "mvn clean install -DskipTests=true"
+			}
 		}
 		
 	}

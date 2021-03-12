@@ -28,10 +28,11 @@ pipeline{
 			
 			steps{
 				
-			sh "cd '/home/opc/IoT-Sense/neomsense'"
-			sh  "pwd"
-			sh "mvn clean install -DskipTests=true"
-			sh "pwd"
+				dir('/home/opc/IoT-Sense/neomsense'){
+					sh  "pwd"
+					sh "mvn clean install -DskipTests=true"
+				}
+				sh "pwd"
 			}   
 		}
 		

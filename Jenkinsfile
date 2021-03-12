@@ -23,12 +23,15 @@ pipeline{
 			    sh "ls -lhrt"
 			
 		}
-		}
+	   }
 		stage('maven build compilation'){
+			
 			steps{
-			sh "cd /home/opc/IoT-Sense/neomsense"
+				
+			sh "cd '/home/opc/IoT-Sense/neomsense'"
 			sh "mvn clean install -DskipTests=true"
-			}
+			
+			}   
 		}
 		
 	}

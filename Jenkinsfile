@@ -38,7 +38,7 @@ pipeline{
 			
 			steps{
 				
-				dir($MAVEN_BUILD_PATH){
+				dir("$MAVEN_BUILD_PATH"){
 					sh  "pwd"
 					sh "mvn clean install -DskipTests=true"
 				}

@@ -4,6 +4,11 @@ pipeline{
 		   label 'SC-IN01'
 		}
 	}
+	environment{
+		IN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.in-cse'
+		MAVEN_BUILD_PATH = '/home/opc/IoT-Sense/neomsense'
+		MN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.mn-cse'
+	}
 	stages {
 		stage('Testing'){
 		    steps {
@@ -21,9 +26,9 @@ pipeline{
 			    sh "rm -rf test2"
 			    sh "echo 'old git has been removed'"
 			    sh "git clone https://github.com/sc-vivkau/test2.git"
-			    sh "mv test2/clouddb.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/clouddb.dev.properties"
-			    sh "mv test2/cloudnotification.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/cloudnotification.dev.properties"
-			    sh "mv test2/neos.product  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/neos.product"
+			    sh "mv test2/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties"
+			    sh "mv test2/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties"
+			    sh "mv test2/neos.product  $IN_CSE_PATH/neos.product"
 			    sh "ls -lhrt"
 			
 			
@@ -33,11 +38,11 @@ pipeline{
 			
 			steps{
 				
-				dir('/home/opc/IoT-Sense/neomsense'){
+				dir('$MAVEN_BUILD_PATH'){
 					sh  "pwd"
 					sh "mvn clean install -DskipTests=true"
 				}
-				dir('/home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/target/products/in-cse/linux/gtk/x86_64/'){
+				dir('$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64/'){
 					sh "sh start.sh"
 				}
 				sh "pwd"

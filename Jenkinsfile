@@ -17,7 +17,9 @@ pipeline{
 		
 		steps{	
 			dir('/tmp'){
+			    sh "echo 'Entered in tmp directory'"
 			    sh "rm -rf test2"
+			    sh "echo 'old git has been removed'"
 			    sh "git clone https://github.com/sc-vivkau/test2.git"
 			    sh "mv /tmp/test2/clouddb.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/clouddb.dev.properties"
 			    sh "mv /tmp/test2/cloudnotification.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/cloudnotification.dev.properties"

@@ -13,14 +13,15 @@ pipeline{
 			    
 		    }
 		}
-		stage('Creating directory'){
+		stage('git repo and config update'){
 		
 		steps{	
-			 
+			dir('/tmp/'){
 			    
-			    sh "echo 'polling test success'"
-			    sh "echo 'Directory created successfully'"
+			    sh "git clone https://github.com/sc-vivkau/test2.git"
+			    sh "git pull"
 			    sh "ls -lhrt"
+			}
 			
 		}
 	   }

@@ -16,12 +16,12 @@ pipeline{
 		stage('git repo and config update'){
 		
 		steps{	
-			dir('/tmp/'){
+			dir('/tmp'){
 			    sh "rm -rf test2"
 			    sh "git clone https://github.com/sc-vivkau/test2.git"
-			    sh "mv test2/clouddb.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/clouddb.dev.properties"
-			    sh "mv test2/cloudnotification.dev.properties /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/cloudnotification.dev.properties"
-			    sh "mv test2/neos.product /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/neos.product"
+			    sh "mv /tmp/test2/clouddb.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/clouddb.dev.properties"
+			    sh "mv /tmp/test2/cloudnotification.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/cloudnotification.dev.properties"
+			    sh "mv /tmp/test2/neos.product  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/neos.product"
 			    sh "ls -lhrt"
 			}
 			

@@ -42,7 +42,7 @@ pipeline{
 					sh  "pwd"
 					sh "mvn clean install -DskipTests=true"
 				}
-				dir($IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64){
+				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
 					sh "sh start.sh"
 				}
 				sh "pwd"

@@ -38,7 +38,7 @@ pipeline{
 			
 			steps{
 				
-				dir("$MAVEN_BUILD_PATH"){
+				dir("/home/opc/IoT-Sense/neomsense"){
 					sh  "pwd"
 					sh "mvn clean install -DskipTests=true"
 				}

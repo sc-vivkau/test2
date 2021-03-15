@@ -16,7 +16,7 @@ pipeline{
 		stage('git repo and config update'){
 		
 		steps{	
-			dir('/home/opc'){
+			
 			    sh "echo 'Entered in /home/opc directory'"
 			    sh "rm -rf test2"
 			    sh "echo 'old git has been removed'"
@@ -25,7 +25,7 @@ pipeline{
 			    sh "mv test2/cloudnotification.dev.properties  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/configurations/services/cloudnotification.dev.properties"
 			    sh "mv test2/neos.product  /home/opc/IoT-Sense/neomsense/com.neos.node.in-cse/neos.product"
 			    sh "ls -lhrt"
-			}
+			
 			
 		}
 	   }

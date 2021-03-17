@@ -44,7 +44,7 @@ pipeline{
 				}
 				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
 					//sh "ps -elf | grep start.sh | awk -F' ' '{system('kill -9 '$4)}'"
-					sh "env.$BUILD_ID=dontKillMe nohup sh start.sh &"
+					sh "BUILD_ID=dontKillMe nohup sh start.sh &"
 				}
 				sh "pwd"
 			}   

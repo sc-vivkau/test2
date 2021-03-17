@@ -1,3 +1,4 @@
+ID=`ps -elf | grep start.sh | cut -d' ' -f 9| head -n 1`
 pipeline{
 	agent{
 	    node {
@@ -44,10 +45,8 @@ pipeline{
 				}
 				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
 					//sh "ps -elf | grep start.sh | awk -F' ' '{system('kill -9 '$4)}'"
-					script{
-					 "ID=`ps -elf | grep start.sh | cut -d' ' -f 9| head -n 1`"
-					}
-					sh "echo $ID"
+					"ID=`ps -elf | grep start.sh | cut -d' ' -f 9| head -n 1`"
+		
 					sh "kill -9 $ID"
 					sh "JENKINS_NODE_COOKIE=dontKillMe nohup sh start.sh &"
 				}

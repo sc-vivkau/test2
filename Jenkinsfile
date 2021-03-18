@@ -1,4 +1,3 @@
-ID=`ps -elf | grep start.sh | cut -d' ' -f 9| head -n 1`
 pipeline{
 	agent{
 	    node {

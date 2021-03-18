@@ -44,7 +44,7 @@ pipeline{
 				}
 				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
 					
-					sh "kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print $4}')"
+					sh "kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print \$4}')"
 				
 					sh "JENKINS_NODE_COOKIE=dontKillMe nohup sh start.sh &"
 				}

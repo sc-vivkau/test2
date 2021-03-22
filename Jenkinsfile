@@ -7,6 +7,7 @@ pipeline{
 	environment{
 		IN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.in-cse'
 		MAVEN_BUILD_PATH = '/home/opc/IoT-Sense/neomsense'
+		REPO_DIR_NAME = 'test2'
 		MN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.mn-cse'
 	}
 	stages {
@@ -22,11 +23,11 @@ pipeline{
 		
 		steps{	
 			sh """
-			     rm -rf test2
+			     rm -rf $REPO_DIR_NAME
 			     echo 'old git has been removed'
 			     git clone https://github.com/sc-vivkau/test2.git
-			     mv test2/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
-			     mv test2/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
+			     mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
+			     mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
 			     mv test2/neos.product  $IN_CSE_PATH/neos.product
 			"""
 			

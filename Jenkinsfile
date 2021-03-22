@@ -21,14 +21,14 @@ pipeline{
 		stage('git repo and config update'){
 		
 		steps{	
-	
-			    sh "rm -rf test2"
-			    sh "echo 'old git has been removed'"
-			    sh "git clone https://github.com/sc-vivkau/test2.git"
-			    sh "mv test2/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties"
-			    sh "mv test2/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties"
-			    sh "mv test2/neos.product  $IN_CSE_PATH/neos.product"
-			
+			sh """
+			     rm -rf test2
+			     echo 'old git has been removed'
+			     git clone https://github.com/sc-vivkau/test2.git
+			     mv test2/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
+			     mv test2/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
+			     mv test2/neos.product  $IN_CSE_PATH/neos.product
+			"""
 			
 		}
 	   }
@@ -46,7 +46,8 @@ pipeline{
 					    if ((`ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l` >= 2)); then
 					    		echo "found a running java process going to kill it..."
 							kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print \$4}')
-							fi
+					    else echo "No Running Java process found so skipping the kill process step..."
+					    fi
 						 
 					  """	
 						

@@ -28,7 +28,7 @@ pipeline{
 			     git clone https://github.com/sc-vivkau/test2.git
 			     mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
 			     mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
-			     mv test2/neos.product  $IN_CSE_PATH/neos.product
+			     mv $REPO_DIR_NAME/neos.product  $IN_CSE_PATH/neos.product
 			"""
 			
 		}

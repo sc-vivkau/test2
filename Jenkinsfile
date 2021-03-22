@@ -43,7 +43,7 @@ pipeline{
 				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
 					
 				    script{
-					    if (sh "ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l" >= 2) {
+					    if (sh "ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l" >= '2') {
 							sh "kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print \$4}')"
 						  } 
 					  }	

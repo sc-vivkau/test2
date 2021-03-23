@@ -28,7 +28,7 @@ pipeline{
 
 			withCredentials([string(credentialsId: 'GITACCESS', variable: 'PW1')]) {
    				 echo "My password is '${PW1}'"
-				sh "git clone https://sc-vivkau:\${PW1}@github.com/sc-vivkau/testing.git"
+				sh "git clone https://Test:\${PW1}@github.com/sc-vivkau/testing.git"
 				
 				}
 			

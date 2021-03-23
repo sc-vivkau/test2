@@ -25,7 +25,7 @@ pipeline{
 			//sh """
 			     //rm -rf $REPO_DIR_NAME
 			     //echo 'old git has been removed'
-			     sh "git clone https://full_access:42afcce2e35aa26c4560983b868109d4c20f13fa@github.com/sc-vivkau/testing.git"
+			     sh "git clone https://sc-vivkau:2ec79ab201afab97efe17eb189d3932d896706e2@github.com/sc-vivkau/testing.git"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
 			     //mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
 			     //mv $REPO_DIR_NAME/neos.product  $IN_CSE_PATH/neos.product

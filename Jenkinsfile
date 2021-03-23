@@ -27,7 +27,8 @@ pipeline{
 			     //echo 'old git has been removed'
 
 			withCredentials([string(credentialsId: 'GITACCESS', variable: 'PW1')]) {
-   				 echo "My password is '${PW1}'"
+   				 sh "rm -rf testing"
+				sh "pwd"
 				sh "git clone https://Test:\${PW1}@github.com/sc-vivkau/testing.git"
 				
 				}

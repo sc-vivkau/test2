@@ -26,10 +26,10 @@ pipeline{
 			     //rm -rf $REPO_DIR_NAME
 			     //echo 'old git has been removed'
 
-			withCredentials([string(credentialsId: 'GITACCESS', variable: 'PW1')]) {
-   				 sh "rm -rf testing"
+			withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
+   				 sh "rm -rf IoT-Sense"
 				sh "pwd"
-				sh "git clone https://Test:\${PW1}@github.com/sc-vivkau/testing.git"
+				sh "git clone https://IOTSense:\${PW1}@github.com/sc-vivkau/testing.git"
 				
 				}
 			

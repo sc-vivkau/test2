@@ -27,15 +27,15 @@ pipeline{
 			     //echo 'old git has been removed'
 
 			withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
-   				 sh "rm -rf IoT-Sense"
+   				 //sh "rm -rf IoT-Sense"
 				sh "pwd"
 				
-				sh "git clone --branch dev-simulator https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+				//sh "git clone --branch dev-simulator https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
 				//sh "git checkout dev-simulator"
 				//sh "git branch -a"
 				}
-			     sh "rm -rf /home/opc/IoT-Sense"
-			     sh "mv IoT-Sense /home/opc/"
+			     //sh "rm -rf /home/opc/IoT-Sense"
+			     //sh "mv IoT-Sense /home/opc/"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
 			     //mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
 			     //mv $REPO_DIR_NAME/neos.product  $IN_CSE_PATH/neos.product
@@ -48,10 +48,10 @@ pipeline{
 			steps{
 				
 				dir("$MAVEN_BUILD_PATH"){
-					sh  "pwd"
-					sh "mvn clean install -DskipTests=true"
+					//sh  "pwd"
+					//sh "mvn clean install -DskipTests=true"
 				}
-				dir("$IN_CSE_PATH/target/products/in-cse/linux/gtk/x86_64"){
+				dir("$MN_CSE_PATH/target/products/mn-cse/linux/gtk/x86_64"){
 					
 				    //sh """
 					//    if ((`ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l` >= 2)); then

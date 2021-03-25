@@ -29,11 +29,11 @@ pipeline{
 			withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
    				 sh "rm -rf IoT-Sense"
 				sh "pwd"
-				sh "git clone https://IOTSense:\${PW1}@github.com/Scry-Analytics/dev-simulator"
+				sh "git clone https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
 				
 				}
 			
-			     sh "mv dev-simulator /home/opc/"
+			     sh "mv IoT-Sense /home/opc/"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
 			     //mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties
 			     //mv $REPO_DIR_NAME/neos.product  $IN_CSE_PATH/neos.product

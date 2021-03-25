@@ -30,8 +30,9 @@ pipeline{
    				 sh "rm -rf IoT-Sense"
 				sh "pwd"
 				
-				sh "git clone https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
-				sh "git branch"
+				sh "git clone --branch dev-simulator https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+				//sh "git checkout dev-simulator"
+				sh "git branch -a"
 				}
 			
 			     sh "mv IoT-Sense /home/opc/"

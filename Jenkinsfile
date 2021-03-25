@@ -29,7 +29,7 @@ pipeline{
 			withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
    				 sh "rm -rf IoT-Sense"
 				sh "pwd"
-				sh "git clone https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+				sh "git clone https://IOTSense:\${PW1}@github.com/Scry-Analytics/dev-simulator"
 				
 				}
 			

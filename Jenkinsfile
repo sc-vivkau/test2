@@ -34,7 +34,7 @@ pipeline{
 				//sh "git checkout dev-simulator"
 				sh "git branch -a"
 				}
-			
+			     sh "rm -rf /home/opc/IoT-Sense"
 			     sh "mv IoT-Sense /home/opc/"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
 			     //mv $REPO_DIR_NAME/cloudnotification.dev.properties  $IN_CSE_PATH/configurations/services/cloudnotification.dev.properties

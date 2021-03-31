@@ -1,7 +1,7 @@
 pipeline{
 	agent{
 	    node {
-		   label 'MN-IN-GPU-node'
+		   label "SC-IN01"
 		}
 	}
 	environment{

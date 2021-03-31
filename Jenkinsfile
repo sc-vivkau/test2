@@ -7,7 +7,7 @@ pipeline{
 	environment{
 		IN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.in-cse'
 		MAVEN_BUILD_PATH = '/home/opc/IoT-Sense/neomsense'
-		REPO_DIR_NAME = 'test2'
+		REPO_DIR_NAME = '/home/opc/IoT-Sense'
 		MN_CSE_PATH = '/home/opc/IoT-Sense/neomsense/com.neos.node.mn-cse'
 	}
 	stages {
@@ -25,15 +25,21 @@ pipeline{
 			//sh """
 			     //rm -rf $REPO_DIR_NAME
 			     //echo 'old git has been removed'
-
-			withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
-   				 //sh "rm -rf IoT-Sense"
-				sh "pwd"
+			sh """
+			
+			if ((`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l` == 1)); then
+				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
+   					 
+					dir($REPO_DIR_NAME){
 				
-				//sh "git clone --branch dev-simulator https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
-				//sh "git checkout dev-simulator"
-				//sh "git branch -a"
+					//sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
 				}
+				else
+				dir(/home/opc/){
+					sh "git clone --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"	
+				}
+				}
+			"""
 			     //sh "rm -rf /home/opc/IoT-Sense"
 			     //sh "mv IoT-Sense /home/opc/"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties
@@ -48,19 +54,19 @@ pipeline{
 			steps{
 				
 				dir("$MAVEN_BUILD_PATH"){
-					//sh  "pwd"
-					//sh "mvn clean install -DskipTests=true"
+					sh  "pwd"
+					sh "mvn clean install -DskipTests=true"
 				}
 				dir("$MN_CSE_PATH/target/products/mn-cse/linux/gtk/x86_64"){
 					
-				    //sh """
-					//    if ((`ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l` >= 2)); then
-					  //  		echo "found a running java process going to kill it..."
-					//		kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print \$4}')
-					  //  else echo "No Running Java process found so skipping the kill process step..."
-					   // fi
+				    sh """
+					    if ((`ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'|wc -l` >= 2)); then
+					    		echo "found a running java process going to kill it..."
+							kill -9 \$(ps -elf | grep 'plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar'| head -n 1| awk -F' ' '{print \$4}')
+					    else echo "No Running Java process found so skipping the kill process step..."
+					    fi
 						 
-				//	  """	
+					  """	
 						
 					sh "JENKINS_NODE_COOKIE=dontKillMe nohup sh start.sh &"
 				}

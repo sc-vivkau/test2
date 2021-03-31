@@ -25,23 +25,26 @@ pipeline{
 			//sh """
 			     //rm -rf $REPO_DIR_NAME
 			     //echo 'old git has been removed'
-			sh """
 			
-			if ((`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l` == 1)); then 
+			
+			if (sh "`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l`" == 1) {
 				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
    					 
 					dir($REPO_DIR_NAME){
 				
 					sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+					}
 				}
+			}
 			
-				else
+			else {
+				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {	
 				dir(/home/opc/){
 					sh "git clone --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"	
 				}
-				fi
 				}
-			"""
+				}
+			
 			     //sh "rm -rf /home/opc/IoT-Sense"
 			     //sh "mv IoT-Sense /home/opc/"
 			     //mv $REPO_DIR_NAME/clouddb.dev.properties  $IN_CSE_PATH/configurations/services/clouddb.dev.properties

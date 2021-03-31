@@ -32,7 +32,7 @@ pipeline{
    					 
 					dir($REPO_DIR_NAME){
 				
-					//sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+					sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
 				}
 				else
 				dir(/home/opc/){

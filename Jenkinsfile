@@ -27,17 +27,19 @@ pipeline{
 			     //echo 'old git has been removed'
 			sh """
 			
-			if ((`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l` == 1)); then
+			if ((`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l` == 1)); then 
 				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
    					 
 					dir($REPO_DIR_NAME){
 				
 					sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
 				}
+			
 				else
 				dir(/home/opc/){
 					sh "git clone --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"	
 				}
+				fi
 				}
 			"""
 			     //sh "rm -rf /home/opc/IoT-Sense"

@@ -1,7 +1,7 @@
 pipeline{
 	agent{
 	    node {
-		   label 'SC-IN01'
+		   label 'Postgresql2_loadTEst'
 		}
 	}
 	environment{
@@ -27,21 +27,21 @@ pipeline{
 			     //echo 'old git has been removed'
 			
 			
-			if (sh "`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l`" == 1) {
-				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
-   					 
-					dir($REPO_DIR_NAME){
+			//if (sh "`ls -lhrt /home/opc/ | grep -w IoT-Sense | wc -l`" == 1) {
+			//	withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {
+   				 
+			//		dir($REPO_DIR_NAME){
 				
-					sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
-					}
-				}
-			}
+			//		sh "git pull --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"
+			//		}
+			//	}
+			//}
 			
-			else {
+			//else {
 				withCredentials([string(credentialsId: 'IOTSense', variable: 'PW1')]) {	
 				dir(/home/opc/){
 					sh "git clone --branch env.GIT_BRANCH https://IOTSense:\${PW1}@github.com/Scry-Analytics/IoT-Sense"	
-				}
+			//	}
 				}
 				}
 			
